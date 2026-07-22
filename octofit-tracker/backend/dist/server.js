@@ -11,6 +11,13 @@ const apiBaseUrl = codespaceName
     : 'http://localhost:8000';
 app.use(cors());
 app.use(express.json());
+app.get('/', (_request, response) => {
+    response.json({
+        service: 'octofit-tracker-api',
+        apiBaseUrl,
+        api: `${apiBaseUrl}/api`,
+    });
+});
 app.use('/api', apiRouter);
 app.get('/api/health', (_request, response) => {
     response.json({ status: 'ok', service: 'octofit-tracker-api', apiBaseUrl });
