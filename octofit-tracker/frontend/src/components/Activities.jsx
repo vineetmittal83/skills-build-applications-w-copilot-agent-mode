@@ -3,12 +3,14 @@ import { fetchCollection } from '../api.js'
 import { formatDate } from './utils.js'
 import { DataPage, EmptyState } from './ui.jsx'
 
+const ACTIVITIES_ENDPOINT = '/api/activities/'
+
 function Activities() {
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('activities').then(setActivities).catch((requestError) => setError(requestError.message))
+    fetchCollection(ACTIVITIES_ENDPOINT).then(setActivities).catch((requestError) => setError(requestError.message))
   }, [])
 
   return (
